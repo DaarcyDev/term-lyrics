@@ -1,0 +1,13 @@
+[project]
+name = "term-lyrics"
+version = "0.1.0"
+description = "🎵 Display real-time lyrics of your currently playing Spotify song in the terminal"
+authors = [{ name = "Daarcy", email = "daarcy@example.com" }]
+license = "MIT"
+dependencies = [
+    "requests"
+]
+
+[project.scripts]
+term-lyrics = "term_lyrics.main:main"
+

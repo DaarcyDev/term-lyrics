@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Caches
+*.cache
+*.log
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Fonts (si no quieres subirlas al repo)
+#fonts/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# pipx / virtualenv
+.env/
+.venv/
+venv/
+ENV/
+env/
+*.egg
+*.pyd
+
+# System files
+.DS_Store
+Thumbs.db
