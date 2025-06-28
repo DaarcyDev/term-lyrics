@@ -64,5 +64,5 @@ def fetch_lyrics(artist, title):
         save_to_cache(artist, title, lyrics)
         # print(lyrics)
         return lyrics
-    return "❌ Lyrics not found on any provider."
+    return "\n❌ Lyrics not found on any provider."
 
