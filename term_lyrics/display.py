@@ -29,7 +29,6 @@ def get_song_position():
         return 0.0
 
 
-    
 def get_terminal_width():
     try:
         return max(40, os.get_terminal_size().columns - 4)
@@ -37,7 +36,7 @@ def get_terminal_width():
         return 80
 
 def generate_alphabet_dict(font="standard"):
-    figlet = Figlet(font=font)  # Ya puedes usar 'miniwi'
+    figlet = Figlet(font=font)
     characters = string.ascii_letters + string.digits + "!?.,:;+-*/=()[]{}<> _"
     alphabet = {}
     for char in characters:
@@ -47,12 +46,12 @@ def generate_alphabet_dict(font="standard"):
 
 def render_text_with_alphabet(text, alphabet, max_width=None):
     if max_width is None:
-        max_width = get_terminal_width() - 4  # un poco de margen
+        max_width = get_terminal_width() - 4
 
     lines = []
     current_line = []
     current_width = 0
-    max_height = max(len(art) for art in alphabet.values())  # altura máxima real
+    max_height = max(len(art) for art in alphabet.values())
 
     for word in text.split(" "):
         word_lines = [""] * max_height
@@ -64,10 +63,9 @@ def render_text_with_alphabet(text, alphabet, max_width=None):
                 word_lines[i] += char_art[i]
             word_width += len(char_art[0])
 
-        # Si esta palabra ya no cabe en la línea actual...
         if current_width + word_width > max_width and current_line:
             lines.extend(current_line)
-            lines.append("")  # espacio entre bloques
+            lines.append("")
             current_line = word_lines
             current_width = word_width
         else:
@@ -82,16 +80,11 @@ def render_text_with_alphabet(text, alphabet, max_width=None):
     if current_line:
         lines.extend(current_line)
 
-    # Centro cada línea final
     centered_lines = [line.center(max_width) for line in lines]
 
     return "\n".join(centered_lines)
 
-
-    return "\n".join(lines)
-
 def install_custom_fonts(project_fonts_dir=None):
-    # Usa el path del módulo actual para ubicar fonts/
     if project_fonts_dir is None:
         current_dir = os.path.dirname(__file__)
         project_fonts_dir = os.path.join(current_dir, "fonts")
@@ -100,7 +93,6 @@ def install_custom_fonts(project_fonts_dir=None):
     os.makedirs(pyfiglet_fonts_dir, exist_ok=True)
 
     if not os.path.exists(project_fonts_dir):
-        # print(f"⚠️ Directorio de fuentes no encontrado: {project_fonts_dir}")
         return
 
     for font_file in os.listdir(project_fonts_dir):
@@ -110,6 +102,4 @@ def install_custom_fonts(project_fonts_dir=None):
 
             if not os.path.exists(target_path):
                 shutil.copyfile(source_path, target_path)
-                # print(f"✅ Fuente instalada: {font_file}")
-            # else:
-                # print(f"ℹ️ Fuente ya existente: {font_file}")
+
