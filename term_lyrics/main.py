@@ -61,15 +61,14 @@ def display_lyrics_from_current_position(lyrics: str, duration: float, position:
                     if alphabet_dict:
                         art = render_text_with_alphabet(line, alphabet_dict)
                     else:
-                        art = line  # texto plano
+                        art = line
 
-                    print(f"Rendering line {idx}: {art}")  # Debugging output
+                    print(f"Rendering line {idx}: {art}")
                     style = f"bold {current_line_color}" if idx == current_line else f"dim {surrounding_lines_color}"
                     text = Text(art, style=style)
                     panel = Panel(text, expand=True, padding=(0, 0))
                     rendered_lines.append(panel)
 
-                # rendered_lines.append(Text(f"⏱️ {round(current_pos)}s / {int(duration)}s", style="cyan", justify="center"))
                 group = Group(*rendered_lines)
                 live.update(group)
                 time.sleep(0.8)
@@ -97,7 +96,7 @@ def display_lyrics_from_current_position(lyrics: str, duration: float, position:
                     if alphabet_dict:
                         art = render_text_with_alphabet(line, alphabet_dict)
                     else:
-                        art = line  # texto plano
+                        art = line
 
                     style = "bold black" if idx == current_line else "dim white"
                     text = Text(art, style=style)

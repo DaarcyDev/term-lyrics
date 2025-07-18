@@ -2,7 +2,6 @@ from .cache import load_from_cache, save_to_cache
 from .scraper import get_genius_url, fetch_genius
 import concurrent.futures
 import requests
-from bs4 import BeautifulSoup
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36",
     "Accept-Language": "en-US,en;q=0.9",
@@ -31,7 +30,6 @@ def fetch_lyrics(artist, title):
             r = requests.get(url, timeout=5)
             return r.json().get("lyrics") if r.status_code == 200 else None
         except:
-            print("Error searching in lyrist")
             return None
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -48,8 +46,6 @@ def fetch_lyrics(artist, title):
             if lyrics:
                 save_to_cache(artist, title, lyrics)
                 return lyrics
-            else:
-                print("No lyrics found on Genius.")
                 
     else:
         save_to_cache(artist, title, lyrics)

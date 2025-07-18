@@ -17,7 +17,6 @@ def load_from_cache(artist, title):
     return None
 
 def save_to_cache(artist, title, lyrics):
-    print("save_to_cafe")
     path = get_cache_path(artist, title)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(lyrics)

@@ -1,5 +1,5 @@
 import subprocess
-from pyfiglet import Figlet, FigletFont
+from pyfiglet import Figlet
 import pyfiglet
 import string
 import os
